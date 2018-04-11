@@ -1,0 +1,27 @@
+<!-- bluetoothTest ANT build system -->
+<project name="C3DReader" default="jar" basedir=".">
+  <description>
+    Ant build system for C3DReader
+  </description>
+
+  <!-- set global properties for this build -->
+  <property environment="env"/>
+  <property name="JAVA_HOME" location="${env.JAVA_HOME}" />
+  <property name="javasrc" location="src/main/java/" />
+  <property name="build" location="build" />
+  <property name="classes" location="build/java" />
+  <property name="doc" location="doc" />
+  
+  <!-- Initialize -->
+  <target name="javacompile" description="Compile Java source" >
+	<mkdir dir="${classes}"/>
+	<javac source="1.6" target="1.6" srcdir="${javasrc}" destdir="${classes}" nowarn="on">
+	</javac>
+  </target>
+  
+	<target name="jar" depends="javacompile" description="Create Jar file" >
+		<jar jarfile="${build}/C3DReader.jar" basedir="${classes}"/>
+	</target>
+  
+</project>
+
